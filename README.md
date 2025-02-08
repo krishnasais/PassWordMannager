@@ -1,5 +1,5 @@
 
-#Features
+Features
 Secure Password Storage: Encrypts and stores user passwords securely in memory.
 Password Retrieval: Allows users to retrieve stored passwords dynamically.
 Dynamic Password Management: Enables users to add, update, and delete stored passwords.
