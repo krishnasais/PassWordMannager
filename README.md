@@ -1,6 +1,5 @@
-This project is a Java-based server application designed to provide a secure and efficient password management solution. It uses Java’s HttpServer class to handle HTTP requests and serves a user-friendly interface for managing, storing, and retrieving passwords securely.
 
-Features
+#Features
 Secure Password Storage: Encrypts and stores user passwords securely in memory.
 Password Retrieval: Allows users to retrieve stored passwords dynamically.
 Dynamic Password Management: Enables users to add, update, and delete stored passwords.
