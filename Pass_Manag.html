@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 500px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        .info-display {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Password Manager</h2>
+        <p class="lead">Securely store and manage your passwords</p>
+    </div>
+
+    <form id="password-form">
+        <div class="form-group">
+            <label for="service">Account Name:</label>
+            <input type="text" class="form-control" id="service" placeholder="Enter Account Name" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter Username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Password" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addPassword()">Add Password</button>
+        <button type="button" class="btn btn-secondary" onclick="getPassword()">Get Password</button>
+    </form>
+
+    <div class="info-display" id="info-display" style="display: none;">
+        <h5>Stored Password Information:</h5>
+        <p id="info-text"></p>
+    </div>
+
+    <div class="footer">
+        <p>CODE MASTERS</p>
+    </div>
+</div>
+
+<script>
+    const passwords = {};
+
+    function addPassword() {
+        const service = document.getElementById('service').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (service && username && password) {
+            passwords[service] = { username: username, password: password };
+            alert('Password added successfully!');
+            displayInfo(service, username, password);
+            clearFields();
+        } else {
+            alert('Please fill in all fields.');
+        }
+    }
+
+    function getPassword() {
+        const service = document.getElementById('service').value;
+        if (service in passwords) {
+            const userDetails = passwords[service];
+            alert(`Username: ${userDetails.username}\nPassword: ${userDetails.password}`);
+        } else {
+            alert('Password not found.');
+        }
+    }
+
+    function clearFields() {
+        document.getElementById('service').value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+    }
+
+    function displayInfo(service, username, password) {
+        const infoDisplay = document.getElementById('info-display');
+        const infoText = document.getElementById('info-text');
+
+        infoText.innerHTML = `<strong>Account Name:</strong> ${service}<br>
+                              <strong>Username:</strong> ${username}<br>
+                              <strong>Password:</strong> ${password}`;
+        infoDisplay.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
